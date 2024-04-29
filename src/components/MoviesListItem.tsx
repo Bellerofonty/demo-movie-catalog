@@ -34,7 +34,10 @@ export default function MoviesListItem(movieData: IMovieData) {
                 <span className="movie-list-rating">
                     {data.rating.kp.toString().substring(0,3)}
                 </span>
-                <div><p>Брат</p><p>1997</p></div>
+                <div className="movie-list-desc">
+                    <p>{data.name}</p>
+                    <p>{data.year}</p>
+                </div>
             </div>
         </div>
     )

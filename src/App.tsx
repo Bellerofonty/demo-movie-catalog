@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-// import logo from './logo.svg';
 import './App.css';
 import MovieCard from "./components/MovieCard";
 import MoviesList from "./components/MoviesList"
 
-import * as data from './APIToken.json';
-const {APIToken} = data
+import * as token from './APIToken.json';
+import * as moviesData from './moviesData.json'
+const {APIToken} = token
+const {docs} = moviesData
 
 const movieData = {
     "id": 535341,
@@ -38,7 +39,7 @@ function App() {
     return (
         <div className="container">
             <MovieCard movieData={movieData}/>
-            <MoviesList movieData={movieData}/>
+            <MoviesList movieData={docs}/>
         </div>
     )
 }

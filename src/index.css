@@ -22,12 +22,14 @@ body {
 .card-caption {
     background: brown;
     margin: 0;
+    padding-left: 0.5rem;
     font-weight: lighter;
 }
 
 .name {
     font-size: 3rem;
     margin: 1rem 0.5rem;
+    font-weight: 400;
 }
 
 /* MOVIE CARD */
@@ -63,6 +65,31 @@ body {
 }
 
 /* MOVIES LIST */
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0.5rem;
+}
+
+.pagination button {
+    background: black;
+    color: lightgray;
+    border: none;
+    float: left;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #b1b1b1;
+    cursor: pointer;
+}
+
+.pagination .active {
+    background: lightgray;
+    color: black;
+}
 
 .movies-list {
     display: flex;
@@ -100,4 +127,17 @@ body {
 
 .movie-list-rating {
     font-size: 3rem;
+}
+
+/*.movie-list-desc {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+.movie-list-desc > p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 7rem;
+    font-size: 0.8rem;
 }
