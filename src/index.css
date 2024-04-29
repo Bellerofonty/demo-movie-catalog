@@ -1,13 +1,103 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background: #363636;
+    color: lightgray;
+}
+
+.container {
+    width: 50.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    background: black;
+}
+
+.card-caption {
+    background: brown;
+    margin: 0;
+    font-weight: lighter;
+}
+
+.name {
+    font-size: 3rem;
+    margin: 1rem 0.5rem;
+}
+
+/* MOVIE CARD */
+
+.rating {
+    margin-right: 2rem;
+}
+
+.movie-card-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.description {
+    margin: 0.5rem;
+}
+
+.description .extra-info {
+    margin: 0.5rem 0;
+}
+
+.description .extra-info .desc{
+    font-weight: bold;
+}
+
+.description > p:first-of-type {
+    margin: 0 0 3rem 0;
+}
+
+.poster {
+    width: 12rem;
+    margin: 0.5rem;
+}
+
+/* MOVIES LIST */
+
+.movies-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 0 0 0.5rem;
+}
+
+.movie-list-item {
+    width: 12rem;
+}
+
+.movie-list-item:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.movie-list-poster {
+    width: 12rem;
+    margin: 0.5rem 0;
+}
+
+.movie-list-info {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0.5rem
+}
+
+.movie-list-info > div {
+    margin-left: 0.5rem;
+}
+
+.movie-list-info p {
+    margin: 0.5rem 0 0;
+}
+
+.movie-list-rating {
+    font-size: 3rem;
 }
