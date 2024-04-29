@@ -35,6 +35,20 @@ const movieData = {
     ]
 }
 
+async function getMovieData(id: number) {
+    const options = {
+        method: 'GET',
+        headers: {accept: 'application/json', 'X-API-KEY': APIToken}
+    };
+
+    return await fetch(`https://api.kinopoisk.dev/v1.4/movie?page=1&limit=1&selectFields=id&selectFields=name&
+    selectFields=rating&selectFields=genres&selectFields=description&selectFields=poster&selectFields=year&
+    selectFields=movieLength&id=${id}&type=movie`, options)
+        .then(response => response.json())
+        .then(response => response.docs)
+        .catch(err => console.error(err))
+}
+
 function App() {
     const [mode, setMode]= useState('card')
     const [movieId, setMovieId] = useState(535341)
