@@ -45,20 +45,20 @@ export default function MoviesList(movieDataList: IMovieDataList) {
     }
 
     return (
-        <div className="card">
+        <div className="list">
             <h1 className="card-caption">Кино справочник</h1>
             <h2 className="name">Лучшие фильмы</h2>
             <nav className="pagination">
-                <button className="pagination-button active" onClick={(e) => {handleClick(0)}}>1</button>
-                <button className="pagination-button" onClick={(e) => {handleClick(1)}}>2</button>
-                <button className="pagination-button" onClick={(e) => {handleClick(2)}}>3</button>
-                <button className="pagination-button" onClick={(e) => {handleClick(3)}}>4</button>
-                <button className="pagination-button" onClick={(e) => {handleClick(4)}}>5</button>
-                <button className="pagination-button" onClick={(e) => {handleClick(5)}}>6</button>
-                <button>»</button>
+                <button key={1} className="pagination-button active" onClick={(e) => {handleClick(0)}}>1</button>
+                <button key={2} className="pagination-button" onClick={(e) => {handleClick(1)}}>2</button>
+                <button key={3} className="pagination-button" onClick={(e) => {handleClick(2)}}>3</button>
+                <button key={4} className="pagination-button" onClick={(e) => {handleClick(3)}}>4</button>
+                <button key={5} className="pagination-button" onClick={(e) => {handleClick(4)}}>5</button>
+                <button key={6} className="pagination-button" onClick={(e) => {handleClick(5)}}>6</button>
+                {/*<button key={7}>»</button>*/}
             </nav>
             <div className="movies-list">
-                {currentMoviesIndexes.map((i:number) => {return dataList[i] && <MoviesListItem movieData={dataList[i]} />})}
+                {currentMoviesIndexes.map((i:number) => {return dataList[i] && <MoviesListItem movieData={dataList[i]} key={i} />})}
             </div>
         </div>
     )

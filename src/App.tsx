@@ -1,11 +1,11 @@
-import React from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
 import './App.css';
 import MovieCard from "./components/MovieCard";
 import MoviesList from "./components/MoviesList"
 
 import * as token from './APIToken.json';
 import * as moviesData from './moviesData.json'
+
 const {APIToken} = token
 const {docs} = moviesData
 
@@ -36,10 +36,21 @@ const movieData = {
 }
 
 function App() {
+    const [mode, setMode]= useState('card')
+    const [movieId, setMovieId] = useState(535341)
+
     return (
         <div className="container">
-            <MovieCard movieData={movieData}/>
-            <MoviesList movieData={docs}/>
+            <header>
+                <div onClick={() => {
+                    setMode('card')
+                }}>
+                    Случайный фильм
+                </div>
+                <div onClick={() => setMode('list')}>Список фильмов</div>
+            </header>
+            {mode === 'card' && <MovieCard movieData={movieData}/>}
+            {mode === 'list' && <MoviesList movieData={docs}/>}
         </div>
     )
 }

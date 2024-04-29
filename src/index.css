@@ -19,6 +19,25 @@ body {
     background: black;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem;
+}
+
+header div {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+header div:hover {
+    background: lightgray;
+    color: black;
+}
+
 .card-caption {
     background: brown;
     margin: 0;
