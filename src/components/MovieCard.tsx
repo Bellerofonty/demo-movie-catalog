@@ -1,34 +1,11 @@
 import React from "react";
 
-// interface IMovieData {
-//     movieData: {
-//         id: number | string
-//         name: string
-//         description: string
-//         rating: {
-//             kp: number
-//             imdb: number
-//             filmCritics: number
-//             russianFilmCritics: number
-//         }
-//         poster: {
-//             url: string
-//             previewUrl: string
-//         }
-//         genres: {
-//             name: string
-//         }[]
-//         movieLength: number
-//         year: number
-//     }
-// }
-
 interface IMovieData {
     [key: string | number]: any
 }
 
-export default function MovieCard(movieData1: IMovieData) {
-    const data = movieData1.movieData
+export default function MovieCard(movieData: IMovieData) {
+    const data = movieData.movieData
     return (
         <div className="card">
             <h1 className="card-caption">Кино справочник</h1>

@@ -41,7 +41,6 @@ function App() {
 
         try {
             const response = await axios.request(options)
-            console.log(response.data)
             setMovieData(response.data)
         } catch (e) {
             const error = e as AxiosError
@@ -58,6 +57,11 @@ function App() {
         setMode('card')
     }
 
+    function handleListItemClick(data: any) {
+        setMovieData(data)
+        setMode('card')
+    }
+
     return (
         <div className="container">
             <header>
@@ -68,8 +72,8 @@ function App() {
                 </div>
                 <div onClick={() => setMode('list')}>Список фильмов</div>
             </header>
-            {mode === 'card' && <MovieCard movieData={movieData}/>}
-            {mode === 'list' && <MoviesList movieData={docs}/>}
+            {mode === 'card' && <MovieCard movieData={movieData} />}
+            {mode === 'list' && <MoviesList movieDataList={docs} onListItemClick={handleListItemClick} />}
         </div>
     )
 }

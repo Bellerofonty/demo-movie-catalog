@@ -82,6 +82,7 @@ header div:hover {
 
 .poster {
     width: 12rem;
+    height: fit-content;
     margin: 0.5rem;
 }
 
@@ -130,6 +131,7 @@ header div:hover {
 .movie-list-poster {
     width: 12rem;
     margin: 0.5rem 0 0 0;
+    cursor: pointer;
 }
 
 .movie-list-info {
