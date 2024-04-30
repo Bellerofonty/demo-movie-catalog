@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios, {AxiosError} from "axios";
 import './App.css';
 import MovieCard from "./components/MovieCard";
 import MoviesList from "./components/MoviesList"
@@ -7,57 +8,61 @@ import * as token from './APIToken.json';
 import * as moviesData from './moviesData.json'
 
 const {APIToken} = token
+
 const {docs} = moviesData
+const movieDataDefault = docs[0]
 
-const movieData = {
-    "id": 535341,
-    "name": "1+1",
-    "year": 2011,
-    "description": "Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений.",
-    "rating": {
-        "kp": 8.824,
-        "imdb": 8.5,
-        "filmCritics": 6.8,
-        "russianFilmCritics": 100
-    },
-    "movieLength": 112,
-    "poster": {
-        "url": "https://image.openmoviedb.com/kinopoisk-images/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/orig",
-        "previewUrl": "https://image.openmoviedb.com/kinopoisk-images/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/x1000"
-    },
-    "genres": [
-        {
-            "name": "драма"
-        },
-        {
-            "name": "комедия"
-        }
-    ]
-}
-
-async function getMovieData(id: number) {
-    const options = {
-        method: 'GET',
-        headers: {accept: 'application/json', 'X-API-KEY': APIToken}
-    };
-
-    return await fetch(`https://api.kinopoisk.dev/v1.4/movie?page=1&limit=1&selectFields=id&selectFields=name&
-    selectFields=rating&selectFields=genres&selectFields=description&selectFields=poster&selectFields=year&
-    selectFields=movieLength&id=${id}&type=movie`, options)
-        .then(response => response.json())
-        .then(response => response.docs)
-        .catch(err => console.error(err))
-}
 
 function App() {
     const [mode, setMode]= useState('card')
-    const [movieId, setMovieId] = useState(535341)
+    const [movieData, setMovieData] = useState(movieDataDefault)
+
+    async function getMovieData({id, random}: {id?: number, random?: boolean}) {
+        const fields = ['id', 'name', 'rating', 'genres', 'description', 'poster', 'year', 'movieLength']
+        const options: any = {
+            method: 'GET',
+            params: {
+                page: '1',
+                limit: '1',
+                selectFields: fields,
+                notNullFields: fields,
+                type: 'movie',
+
+            },
+            headers: {accept: 'application/json', 'X-API-KEY': APIToken}
+        }
+
+        if (random) {
+            options.url = 'https://api.kinopoisk.dev/v1.4/movie/random'
+        } else if (id) {
+            options['id'] = id
+            options.url = 'https://api.kinopoisk.dev/v1.4/movie/'
+        }
+
+        try {
+            const response = await axios.request(options)
+            console.log(response.data)
+            setMovieData(response.data)
+        } catch (e) {
+            const error = e as AxiosError
+            console.error(error.message)
+
+            // API Кинопоиска может работать нестабильно
+            setMovieData(movieDataDefault)
+            console.error('Request error. Using local data')
+        }
+    }
+
+    function handleRandomMovieClick() {
+        getMovieData({random: true})
+        setMode('card')
+    }
 
     return (
         <div className="container">
             <header>
                 <div onClick={() => {
-                    setMode('card')
+                    handleRandomMovieClick()
                 }}>
                     Случайный фильм
                 </div>
