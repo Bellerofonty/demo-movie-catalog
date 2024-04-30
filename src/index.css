@@ -60,6 +60,8 @@ header div:hover {
 .movie-card-content {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    min-height: 19rem;
 }
 
 .description {

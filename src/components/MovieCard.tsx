@@ -33,8 +33,8 @@ export default function MovieCard(movieData1: IMovieData) {
         <div className="card">
             <h1 className="card-caption">Кино справочник</h1>
             <h2 className="name">
-                <span className="rating">{data.rating.kp.toString().substring(0,3)}</span>
-                {data.name}
+                <span className="rating">{data.rating.kp ? data.rating.kp.toString().substring(0,3) : 'N/A'}</span>
+                {data.name || data.names[0].name}
             </h2>
             <div className="movie-card-content">
                 <div className="description">
