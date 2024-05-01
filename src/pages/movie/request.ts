@@ -45,7 +45,7 @@ const commonOptions: Partial<Options> = {
     headers: {accept: 'application/json', 'X-API-KEY': APIToken},
 }
 
-export const getRandomMovie = (): Promise<IMovieData> => {
+const getRandomMovie = (): Promise<IMovieData> => {
     const options = {
         ...commonOptions,
         url: RANDOM_MOVIE_URL

@@ -4,7 +4,7 @@ import {MovieCard} from "../../components/MovieCard";
 import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
 import {Loader} from "../../components/Loader";
-import {getMovieData, getRandomMovie, MovieId} from "./request";
+import {getMovieData, MovieId} from "./request";
 
 const {docs} = moviesData
 
@@ -62,7 +62,7 @@ export const Movie = () => {
     }, [])
 
     const updateRandomMovie = useCallback(() => {
-        getRandomMovie()
+        getMovieData({id: 'random'})
             .then((data) => {
                 dispatch({
                     type: 'setReady',
