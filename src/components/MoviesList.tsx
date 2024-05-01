@@ -45,7 +45,6 @@ export  function MoviesList({movieDataList, onListItemClick}: IMovieListProps) {
                 {currentMoviesIndexes.map((i:number) => { // TODO filter?
                     return movieDataList[i] && <MoviesListItem
                         movieData={movieDataList[i]}
-                        onListItemClick={handleListItemClick}
                         key={i}
                     />
                 })}
