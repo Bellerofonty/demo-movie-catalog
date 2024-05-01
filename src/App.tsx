@@ -13,6 +13,7 @@ import {
     Route,
 } from "react-router-dom";
 import {Home} from "./pages/home/Home";
+import {Movie} from "./pages/movie/Movie";
 
 const {APIToken} = token
 
@@ -26,7 +27,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />}/>
-                    <Route path="/movie/:id" element={<div>Movie</div>}/>
+                    <Route path="/movie/:id" element={<Movie />}/>
                 </Routes>
             </Router>
         </div>
