@@ -35,6 +35,7 @@ export function MovieCard({movieData}: IMovieCardProps) {
                 </div>
                 <img src={movieData.poster.previewUrl || posterPlaceholder} alt="poster" className="poster"/>
             </div>
+            <div className="next-random-movie" onClick={() => {window.location.reload()}}>Новый случайный фильм</div>
         </div>
     )
 }
