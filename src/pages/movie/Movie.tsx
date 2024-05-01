@@ -31,11 +31,10 @@ const getMovieData = ({id}: IGetMovieDataParams): Promise<IMovieData> => {
             selectFields: fields,
             notNullFields: fields,
             type: 'movie',
-
+            id: id === "random" ? undefined : id
         },
         headers: {accept: 'application/json', 'X-API-KEY': APIToken},
-        url: id === "random" ? 'https://api.kinopoisk.dev/v1.4/movie/random' : 'https://api.kinopoisk.dev/v1.4/movie/',
-        id: id === "random" ? undefined : id
+        url: id === "random" ? 'https://api.kinopoisk.dev/v1.4/movie/random' : 'https://api.kinopoisk.dev/v1.4/movie',
     }
 
     return axios.request(options)
