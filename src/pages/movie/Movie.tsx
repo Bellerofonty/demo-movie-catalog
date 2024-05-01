@@ -1,10 +1,10 @@
-import React, {useEffect, useReducer} from "react";
+import React, {useCallback, useEffect, useReducer} from "react";
 import * as moviesData from "../../moviesData.json"
 import {MovieCard} from "../../components/MovieCard";
 import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
 import {Loader} from "../../components/Loader";
-import {getMovieData, MovieId} from "./request";
+import {getMovieData, getRandomMovie, MovieId} from "./request";
 
 const {docs} = moviesData
 
@@ -48,8 +48,10 @@ const movieReducer = (state: MovieState, action: MovieAction): MovieState => {
 export const Movie = () => {
     const params = useParams();
     const [movieState, dispatch] = useReducer(movieReducer, {state: 'loading'})
+    const id = parseIdFromParams(params)
+
     useEffect(() => {
-        getMovieData({id: parseIdFromParams(params)})
+        getMovieData({id})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
             })
@@ -59,11 +61,26 @@ export const Movie = () => {
             })
     }, [])
 
+    const updateRandomMovie = useCallback(() => {
+        getRandomMovie()
+            .then((data) => {
+                dispatch({
+                    type: 'setReady',
+                    payload: data
+                })
+            })
+            .catch((e) => {
+                console.error(e)
+                dispatch({type: 'setReady', payload: docs[0]})
+            })
+    }, [])
+
+
     if (movieState.state === 'loading') {
-        return <Loader />
+        return <Loader/>
     }
 
     return (
-        <MovieCard movieData={movieState.movieData}/>
+        <MovieCard movieData={movieState.movieData} nextRandomMovie={id === "random" ? updateRandomMovie : undefined} />
     )
 }

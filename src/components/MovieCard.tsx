@@ -4,9 +4,10 @@ import posterPlaceholder from '../img/poster-placeholder.jpg'
 
 interface IMovieCardProps {
     movieData: IMovieData
+    nextRandomMovie?: VoidFunction
 }
 
-export function MovieCard({movieData}: IMovieCardProps) {
+export function MovieCard({movieData, nextRandomMovie}: IMovieCardProps) {
     return (
         <div className="card">
             <h1 className="card-caption">Кино справочник</h1>
@@ -35,7 +36,9 @@ export function MovieCard({movieData}: IMovieCardProps) {
                 </div>
                 <img src={movieData.poster.previewUrl || posterPlaceholder} alt="poster" className="poster"/>
             </div>
-            <div className="next-random-movie" onClick={() => {window.location.reload()}}>Новый случайный фильм</div>
+            {nextRandomMovie && (<button type="button" className="next-random-movie" onClick={nextRandomMovie}>
+                Новый случайный фильм
+            </button>)}
         </div>
     )
 }
