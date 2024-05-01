@@ -6,6 +6,7 @@ import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
 import * as token from '../../APIToken.json'
 import axios, {AxiosError} from "axios";
+import {Loader} from "../../components/Loader";
 
 type MovieId = number | 'random'
 
@@ -98,8 +99,11 @@ export const Movie = () => {
             })
     }, [])
 
+    if (movieState.state === 'loading') {
+        return <Loader />
+    }
+
     return (
-        // <MovieCard movieData={movieData}/>
-        <div>{params.id}</div>
+        <MovieCard movieData={movieState.movieData}/>
     )
 }
