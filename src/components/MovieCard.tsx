@@ -26,10 +26,7 @@ export function MovieCard({movieData}: IMovieCardProps) {
                         <span className="desc">Жанры: </span>
                         {movieData.genres.length ?
                             movieData.genres
-                                .map((genre: {
-                                    name: string
-                                    [key:string]: string
-                                }) => {
+                                .map((genre) => {
                                     return genre.name
                                 })
                                 .join(', ') : 'N/A'

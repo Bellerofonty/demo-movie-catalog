@@ -5,6 +5,6 @@ const {docs} = moviesData
 
 export const Home = () => {
     return (
-        <MoviesList movieDataList={docs} onListItemClick={() => {}}/>
+        <MoviesList movieDataList={docs}/>
     )
 }
