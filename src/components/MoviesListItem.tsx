@@ -1,36 +1,20 @@
 import React from "react";
+import {IMovieData} from "../models";
+import {useNavigate} from 'react-router-dom'
 
-interface IMovieData {
-    id: number | string
-    name: string
-    description: string
-    rating: {
-        kp: number
-        imdb: number
-        filmCritics: number
-        russianFilmCritics: number
-    }
-    poster: {
-        url: string
-        previewUrl: string
-    }
-    genres: {
-        name: string
-    }[]
-    movieLength: number
-    year: number
-
+interface IMoviesListItemProps {
+    movieData: IMovieData
 }
 
-export default function MoviesListItem({movieData, onListItemClick}: {
-        movieData: IMovieData, onListItemClick: Function
-    }) {
+export function MoviesListItem({movieData}: IMoviesListItemProps) {
+    const navigate = useNavigate();
+
     return (
         <div className="movie-list-item">
             <img
                 src={movieData.poster.previewUrl}
                 className="movie-list-poster" alt="poster"
-                onClick={(e) => {onListItemClick(movieData)}}
+                onClick={() => {navigate(`/movie/${movieData.id}`)}}
             />
             <div className="movie-list-info">
                 <span className="movie-list-rating">

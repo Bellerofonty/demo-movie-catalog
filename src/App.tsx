@@ -1,81 +1,43 @@
-import React, {useState} from 'react';
-import axios, {AxiosError} from "axios";
+import React from 'react'
 import './App.css';
-import MovieCard from "./components/MovieCard";
-import MoviesList from "./components/MoviesList"
-
-import * as token from './APIToken.json';
-import * as moviesData from './moviesData.json'
-
-const {APIToken} = token
-
-const {docs} = moviesData
-const movieDataDefault = docs[0]
-
+import {useNavigate} from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import {Home} from "./pages/home/Home";
+import {Movie} from "./pages/movie/Movie";
 
 function App() {
-    const [mode, setMode]= useState('card')
-    const [movieData, setMovieData] = useState(movieDataDefault)
+    const navigate = useNavigate();
 
-    async function getMovieData({id, random}: {id?: number, random?: boolean}) {
-        const fields = ['id', 'name', 'rating', 'genres', 'description', 'poster', 'year', 'movieLength']
-        const options: any = {
-            method: 'GET',
-            params: {
-                page: '1',
-                limit: '1',
-                selectFields: fields,
-                notNullFields: fields,
-                type: 'movie',
+    return (
+        <>
+            <header>
+                <div onClick={() => navigate('/movie/random')}>
+                    Случайный фильм
+                </div>
+                <div onClick={() => navigate('/')}>Список фильмов</div>
+            </header>
+            <Routes>
 
-            },
-            headers: {accept: 'application/json', 'X-API-KEY': APIToken}
-        }
+                <Route path="/" element={<Home />}/>
+                <Route path="/movie/:id" element={<Movie />}/>
+            </Routes>
+        </>
+    )
+}
 
-        if (random) {
-            options.url = 'https://api.kinopoisk.dev/v1.4/movie/random'
-        } else if (id) {
-            options['id'] = id
-            options.url = 'https://api.kinopoisk.dev/v1.4/movie/'
-        }
-
-        try {
-            const response = await axios.request(options)
-            setMovieData(response.data)
-        } catch (e) {
-            const error = e as AxiosError
-            console.error(error.message)
-
-            // API Кинопоиска может работать нестабильно
-            setMovieData(movieDataDefault)
-            console.error('Request error. Using local data')
-        }
-    }
-
-    function handleRandomMovieClick() {
-        getMovieData({random: true})
-        setMode('card')
-    }
-
-    function handleListItemClick(data: any) {
-        setMovieData(data)
-        setMode('card')
-    }
+function AppContainer() {
 
     return (
         <div className="container">
-            <header>
-                <div onClick={() => {
-                    handleRandomMovieClick()
-                }}>
-                    Случайный фильм
-                </div>
-                <div onClick={() => setMode('list')}>Список фильмов</div>
-            </header>
-            {mode === 'card' && <MovieCard movieData={movieData} />}
-            {mode === 'list' && <MoviesList movieDataList={docs} onListItemClick={handleListItemClick} />}
+            <Router>
+                <App />
+            </Router>
         </div>
     )
 }
 
-export default App;
+export default AppContainer;

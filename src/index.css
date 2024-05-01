@@ -86,6 +86,20 @@ header div:hover {
     margin: 0.5rem;
 }
 
+.next-random-movie {
+    width: 12rem;
+    background: black;
+    color: lightgray;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    margin: 0.5rem auto 0 auto;
+}
+
+.next-random-movie:hover {
+    background: lightgray;
+    color: black;
+}
+
 /* MOVIES LIST */
 
 .pagination {

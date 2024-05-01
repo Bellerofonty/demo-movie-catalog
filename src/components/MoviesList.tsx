@@ -1,30 +1,26 @@
 import React, {useState} from "react";
-import MoviesListItem from "./MoviesListItem";
+import {MoviesListItem} from "./MoviesListItem";
+import {IMovieData} from "../models";
 
 interface IMovieListProps {
-    movieDataList: {
-        [key: string]: any
-    }
-    onListItemClick: Function
+    movieDataList: IMovieData[]
 }
 
-export default function MoviesList({movieDataList, onListItemClick}: IMovieListProps) {
+const PAGES_COUNT = 6
+
+const MOVIES_ON_PAGE = 4
+
+export function MoviesList({movieDataList}: IMovieListProps) {
     const [currentPage, setCurrentPage] = useState(0)
 
-    let currentMoviesIndexes = []
-    for (let i:number = 0; i < 4; i++) {
-        currentMoviesIndexes.push(currentPage * 4 + i)
-    }
+    const firstMovieIndex = currentPage * MOVIES_ON_PAGE
+    const movies = movieDataList.slice(firstMovieIndex, firstMovieIndex + MOVIES_ON_PAGE)
 
-    function handlePaginationClick(pageNumber:number) {
+    function handlePaginationClick(pageNumber: number) {
         const buttons = document.querySelectorAll('.pagination-button')
         buttons[pageNumber].classList.add('active')
         buttons[currentPage].classList.remove('active')
         setCurrentPage(pageNumber)
-    }
-
-    function handleListItemClick(data:any) {
-        onListItemClick(data)
     }
 
     return (
@@ -32,21 +28,29 @@ export default function MoviesList({movieDataList, onListItemClick}: IMovieListP
             <h1 className="card-caption">Кино справочник</h1>
             <h2 className="name">Лучшие фильмы</h2>
             <nav className="pagination">
-                <button key={1} className="pagination-button active" onClick={(e) => {handlePaginationClick(0)}}>1</button>
-                <button key={2} className="pagination-button" onClick={(e) => {handlePaginationClick(1)}}>2</button>
-                <button key={3} className="pagination-button" onClick={(e) => {handlePaginationClick(2)}}>3</button>
-                <button key={4} className="pagination-button" onClick={(e) => {handlePaginationClick(3)}}>4</button>
-                <button key={5} className="pagination-button" onClick={(e) => {handlePaginationClick(4)}}>5</button>
-                <button key={6} className="pagination-button" onClick={(e) => {handlePaginationClick(5)}}>6</button>
+                {
+                    new Array(PAGES_COUNT)
+                        .fill('')
+                        .map((_, i) => (
+                            <button
+                                key={i}
+                                className={i === 0 ? "pagination-button active" : 'pagination-button'}
+                                onClick={() => {
+                                    handlePaginationClick(i)
+                                }}
+                            >
+                                {i + 1}
+                            </button>))
+                }
             </nav>
             <div className="movies-list">
-                {currentMoviesIndexes.map((i:number) => {
-                    return movieDataList[i] && <MoviesListItem
-                        movieData={movieDataList[i]}
-                        onListItemClick={handleListItemClick}
-                        key={i}
-                    />
-                })}
+                {movies
+                    .map((movie) => {
+                        return (<MoviesListItem
+                            movieData={movie}
+                            key={movie.id}
+                        />)
+                    })}
             </div>
         </div>
     )
