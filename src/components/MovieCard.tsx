@@ -1,5 +1,6 @@
 import React from "react";
 import {IMovieData} from "../models";
+import posterPlaceholder from '../img/poster-placeholder.jpg'
 
 interface IMovieCardProps {
     movieData: IMovieData
@@ -35,7 +36,7 @@ export function MovieCard({movieData}: IMovieCardProps) {
                         }
                     </p>
                 </div>
-                <img src={movieData.poster.previewUrl} alt="poster" className="poster"/>
+                <img src={movieData.poster.previewUrl || posterPlaceholder} alt="poster" className="poster"/>
             </div>
         </div>
     )
