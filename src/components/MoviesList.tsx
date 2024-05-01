@@ -34,7 +34,7 @@ export function MoviesList({movieDataList}: IMovieListProps) {
                         .map((_, i) => (
                             <button
                                 key={i}
-                                className={i === 1 ? "pagination-button active" : 'pagination-button'}
+                                className={i === 0 ? "pagination-button active" : 'pagination-button'}
                                 onClick={() => {
                                     handlePaginationClick(i)
                                 }}

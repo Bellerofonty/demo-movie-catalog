@@ -1,6 +1,6 @@
 import {IMovieData} from "../../models";
 import axios from "axios";
-import {FIELDS, MOVIE_URL, RANDOM_MOVIE_URL} from "./const";
+import {FIELDS, MOVIE_URL, RANDOM_MOVIE_URL, RETRY_COUNT} from "./const";
 import * as token from '../../APIToken.json'
 
 const {APIToken} = token
@@ -79,5 +79,16 @@ const getMovieDataById = (id: number): Promise<IMovieData> => {
 }
 
 export const getMovieData = ({id}: IGetMovieDataParams): Promise<IMovieData> => {
-    return id === 'random' ? getRandomMovie() : getMovieDataById(Number(id))
+    let count = 0;
+    const request = () => {
+        return id === 'random' ? getRandomMovie() : getMovieDataById(id)
+            .catch((e) => {
+                if (count < RETRY_COUNT) {
+                    count++
+                    return getMovieData({id})
+                }
+                throw e;
+            })
+    }
+    return request()
 }
