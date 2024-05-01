@@ -1,11 +1,11 @@
 import React from "react";
+import {IMovieData} from "../models";
 
-interface IMovieData {
-    [key: string | number]: any
+interface IMovieCardProps {
+    movieData: IMovieData
 }
 
-export default function MovieCard(movieData: IMovieData) {
-    const data = movieData.movieData
+export function MovieCard({movieData}: IMovieCardProps) {
     return (
         <div className="card">
             <h1 className="card-caption">Кино справочник</h1>
@@ -20,13 +20,16 @@ export default function MovieCard(movieData: IMovieData) {
                     <p className="extra-info"><span className="desc">Год выхода: </span>{data.year}</p>
                     <p className="extra-info">
                         <span className="desc">Жанры: </span>
-                        {data.genres
-                            .map((genre:any) => {return genre.name})
-                            .join(', ')
+                        {movieData.genres.length ?
+                            movieData.genres
+                                .map((genre: {
+                                    name: string
+                                    [key:string]: string
+                                }) => {
                         }
                     </p>
                 </div>
-                <img src={data.poster.previewUrl} alt="poster" className="poster"/>
+                <img src={movieData.poster.previewUrl} alt="poster" className="poster"/>
             </div>
         </div>
     )

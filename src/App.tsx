@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import axios, {AxiosError} from "axios";
 import './App.css';
-import MovieCard from "./components/MovieCard";
-import MoviesList from "./components/MoviesList"
+import {MovieCard} from "./components/MovieCard";
+import {MoviesList} from "./components/MoviesList"
+import {IMovieData} from "./models";
 
 import * as token from './APIToken.json';
 import * as moviesData from './moviesData.json'
@@ -14,12 +15,16 @@ const movieDataDefault = docs[0]
 
 
 function App() {
-    const [mode, setMode]= useState('card')
+    const [mode, setMode] = useState('card')
     const [movieData, setMovieData] = useState(movieDataDefault)
 
-    async function getMovieData({id, random}: {id?: number, random?: boolean}) {
+    async function getMovieData({id, random}: { id?: number, random?: boolean }) {
         const fields = ['id', 'name', 'rating', 'genres', 'description', 'poster', 'year', 'movieLength']
-        const options: any = {
+        const options: {
+            [key: string]: string | {
+                [key: string]: string | string[]
+            }
+        } = {
             method: 'GET',
             params: {
                 page: '1',
@@ -35,7 +40,7 @@ function App() {
         if (random) {
             options.url = 'https://api.kinopoisk.dev/v1.4/movie/random'
         } else if (id) {
-            options['id'] = id
+            options['id'] = id.toString()
             options.url = 'https://api.kinopoisk.dev/v1.4/movie/'
         }
 
@@ -57,7 +62,7 @@ function App() {
         setMode('card')
     }
 
-    function handleListItemClick(data: any) {
+    function handleListItemClick(data: IMovieData) {
         setMovieData(data)
         setMode('card')
     }

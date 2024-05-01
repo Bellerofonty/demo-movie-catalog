@@ -1,30 +1,12 @@
 import React from "react";
+import {IMovieData} from "../models";
 
-interface IMovieData {
-    id: number | string
-    name: string
-    description: string
-    rating: {
-        kp: number
-        imdb: number
-        filmCritics: number
-        russianFilmCritics: number
-    }
-    poster: {
-        url: string
-        previewUrl: string
-    }
-    genres: {
-        name: string
-    }[]
-    movieLength: number
-    year: number
-
+interface IMoviesListItemProps {
+    movieData: IMovieData
+    onListItemClick: Function
 }
 
-export default function MoviesListItem({movieData, onListItemClick}: {
-        movieData: IMovieData, onListItemClick: Function
-    }) {
+export function MoviesListItem({movieData, onListItemClick}: IMoviesListItemProps) {
     return (
         <div className="movie-list-item">
             <img

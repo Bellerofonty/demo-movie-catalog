@@ -1,17 +1,16 @@
 import React, {useState} from "react";
-import MoviesListItem from "./MoviesListItem";
+import {MoviesListItem} from "./MoviesListItem";
+import {IMovieData} from "../models";
 
 interface IMovieListProps {
-    movieDataList: {
-        [key: string]: any
-    }
+    movieDataList: IMovieData[]
     onListItemClick: Function
 }
 
-export default function MoviesList({movieDataList, onListItemClick}: IMovieListProps) {
+export  function MoviesList({movieDataList, onListItemClick}: IMovieListProps) {
     const [currentPage, setCurrentPage] = useState(0)
 
-    let currentMoviesIndexes = []
+    const currentMoviesIndexes = []
     for (let i:number = 0; i < 4; i++) {
         currentMoviesIndexes.push(currentPage * 4 + i)
     }
@@ -23,7 +22,7 @@ export default function MoviesList({movieDataList, onListItemClick}: IMovieListP
         setCurrentPage(pageNumber)
     }
 
-    function handleListItemClick(data:any) {
+    function handleListItemClick(data: IMovieData) {
         onListItemClick(data)
     }
 
@@ -32,6 +31,7 @@ export default function MoviesList({movieDataList, onListItemClick}: IMovieListP
             <h1 className="card-caption">Кино справочник</h1>
             <h2 className="name">Лучшие фильмы</h2>
             <nav className="pagination">
+                {/* TODO map */}
                 <button key={1} className="pagination-button active" onClick={(e) => {handlePaginationClick(0)}}>1</button>
                 <button key={2} className="pagination-button" onClick={(e) => {handlePaginationClick(1)}}>2</button>
                 <button key={3} className="pagination-button" onClick={(e) => {handlePaginationClick(2)}}>3</button>
@@ -40,7 +40,7 @@ export default function MoviesList({movieDataList, onListItemClick}: IMovieListP
                 <button key={6} className="pagination-button" onClick={(e) => {handlePaginationClick(5)}}>6</button>
             </nav>
             <div className="movies-list">
-                {currentMoviesIndexes.map((i:number) => {
+                {currentMoviesIndexes.map((i:number) => { // TODO filter?
                     return movieDataList[i] && <MoviesListItem
                         movieData={movieDataList[i]}
                         onListItemClick={handleListItemClick}
