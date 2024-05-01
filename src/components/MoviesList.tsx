@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {MoviesListItem} from "./MoviesListItem";
+import {Simulate} from "react-dom/test-utils";
+import input = Simulate.input;
 import {IMovieData} from "../models";
 
 interface IMovieListProps {

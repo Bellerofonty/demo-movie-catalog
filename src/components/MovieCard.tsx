@@ -10,14 +10,17 @@ export function MovieCard({movieData}: IMovieCardProps) {
         <div className="card">
             <h1 className="card-caption">Кино справочник</h1>
             <h2 className="name">
-                <span className="rating">{data.rating.kp ? data.rating.kp.toString().substring(0,3) : 'N/A'}</span>
-                {data.name || data.names[0].name}
+                <span className="rating">{movieData.rating.kp ? movieData.rating.kp.toString().substring(0, 3) : 'N/A'}</span>
+                {movieData.name || (movieData.names && movieData.names[0].name)}
             </h2>
             <div className="movie-card-content">
                 <div className="description">
-                    <p>{data.description}</p>
-                    <p className="extra-info"><span className="desc">Длительность: </span>{data.movieLength}</p>
-                    <p className="extra-info"><span className="desc">Год выхода: </span>{data.year}</p>
+                    <p>{movieData.description}</p>
+                    <p className="extra-info">
+                        <span className="desc">Длительность: </span>
+                        {movieData.movieLength ? (movieData.movieLength + ' минут') : 'N/A'}
+                    </p>
+                    <p className="extra-info"><span className="desc">Год выхода: </span>{movieData.year || 'N/A'}</p>
                     <p className="extra-info">
                         <span className="desc">Жанры: </span>
                         {movieData.genres.length ?
@@ -26,6 +29,9 @@ export function MovieCard({movieData}: IMovieCardProps) {
                                     name: string
                                     [key:string]: string
                                 }) => {
+                                    return genre.name
+                                })
+                                .join(', ') : 'N/A'
                         }
                     </p>
                 </div>

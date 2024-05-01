@@ -57,8 +57,8 @@ function App() {
         }
     }
 
-    function handleRandomMovieClick() {
-        getMovieData({random: true})
+    async function handleRandomMovieClick() {
+        await getMovieData({random: true})
         setMode('card')
     }
 
@@ -77,8 +77,8 @@ function App() {
                 </div>
                 <div onClick={() => setMode('list')}>Список фильмов</div>
             </header>
-            {mode === 'card' && <MovieCard movieData={movieData} />}
-            {mode === 'list' && <MoviesList movieDataList={docs} onListItemClick={handleListItemClick} />}
+            {mode === 'card' && <MovieCard movieData={movieData}/>}
+            {mode === 'list' && <MoviesList movieDataList={docs} onListItemClick={handleListItemClick}/>}
         </div>
     )
 }
