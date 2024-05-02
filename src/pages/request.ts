@@ -97,12 +97,12 @@ export const getMovieData = ({id}: IGetMovieDataParams): Promise<IMovieData> => 
     return request()
 }
 
-export const getMoviesList = (count: number): Promise<IMovieData[]> => {
+export const getMoviesList = (limit: number): Promise<IMovieData[]> => {
     const options = {
         ...commonOptions,
         params: {
             ...commonOptions.params,
-            count
+            limit
         },
         url: MOVIE_URL
     }
