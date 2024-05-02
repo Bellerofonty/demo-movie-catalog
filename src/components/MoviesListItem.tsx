@@ -8,7 +8,7 @@ interface IMoviesListItemProps {
 }
 
 export function MoviesListItem({movieData}: IMoviesListItemProps) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     return (
         <div className="movie-list-item">

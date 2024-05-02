@@ -181,10 +181,29 @@ header div:hover {
     font-size: 0.8rem;
 }
 
+/* SIMILAR */
+
+.similar-movies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.similar-movies-item {
+    margin: 0;
+    /*height: 20rem;*/
+}
+
+.similar-movies-item img {
+    width: 9rem;
+    height: auto;
+    cursor: pointer;
+}
+
 /* OTHER */
 
 .loader {
     width: fit-content;
-    margin: 200px auto 0 auto;
-    padding-bottom: 200px;
+    margin: 12.5rem auto 0 auto;
+    padding-bottom: 12.5rem;
 }

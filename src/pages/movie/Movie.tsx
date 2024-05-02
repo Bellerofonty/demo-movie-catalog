@@ -5,6 +5,7 @@ import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
 import {Loader} from "../../components/Loader";
 import {getMovieData, MovieId} from "../request";
+import {SimilarMovies} from "../../components/SimilarMovies";
 
 const {docs} = moviesData
 
@@ -80,7 +81,12 @@ export const Movie = () => {
         return <Loader/>
     }
 
+    console.log('genres', movieState.movieData.genres[0].name)
+
     return (
-        <MovieCard movieData={movieState.movieData} nextRandomMovie={id === "random" ? updateRandomMovie : undefined} />
+        <>
+            <MovieCard movieData={movieState.movieData} nextRandomMovie={id === "random" ? updateRandomMovie : undefined} />
+            <SimilarMovies genres={movieState.movieData.genres[0].name}/>
+        </>
     )
 }
