@@ -85,12 +85,17 @@ export const Movie = () => {
         return <Loader/>
     }
 
-    console.log('genres', movieState.movieData.genres[0].name)
+    const genres = (movieState.movieData.genres &&
+        movieState.movieData.genres[0] &&
+        movieState.movieData.genres[0].name) ?
+        movieState.movieData.genres[0].name :
+        ''
 
     return (
         <>
-            <MovieCard movieData={movieState.movieData} nextRandomMovie={id === "random" ? updateRandomMovie : undefined} />
-            <SimilarMovies genres={movieState.movieData.genres[0].name}/>
+            <MovieCard movieData={movieState.movieData}
+                       nextRandomMovie={id === "random" ? updateRandomMovie : undefined}/>
+            <SimilarMovies genres={genres}/>
         </>
     )
 }
