@@ -1,6 +1,7 @@
 import React from "react";
 import {IMovieData} from "../models";
 import {useNavigate} from 'react-router-dom'
+import {PATH} from '../App'
 
 interface IMoviesListItemProps {
     movieData: IMovieData
@@ -14,7 +15,7 @@ export function MoviesListItem({movieData}: IMoviesListItemProps) {
             <img
                 src={movieData.poster.previewUrl}
                 className="movie-list-poster" alt="poster"
-                onClick={() => {navigate(`/movie/${movieData.id}`)}}
+                onClick={() => {navigate(`${PATH}/movie/${movieData.id}`)}}
             />
             <div className="movie-list-info">
                 <span className="movie-list-rating">

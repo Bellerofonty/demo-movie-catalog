@@ -9,21 +9,24 @@ import {
 import {Home} from "./pages/home/Home";
 import {Movie} from "./pages/movie/Movie";
 
+const PROD_PATH = "/test-assignment-react-developer-rustore"
+const DEV_PATH = ""
+export const PATH = process.env.NODE_ENV === 'production' ? PROD_PATH : DEV_PATH
+
 function App() {
     const navigate = useNavigate();
 
     return (
         <>
             <header>
-                <div onClick={() => navigate('/movie/random')}>
+                <div onClick={() => navigate(`${PATH}/movie/random`)}>
                     Случайный фильм
                 </div>
-                <div onClick={() => navigate('/')}>Список фильмов</div>
+                <div onClick={() => navigate(`${PATH}/`)}>Список фильмов</div>
             </header>
             <Routes>
-
-                <Route path="/" element={<Home />}/>
-                <Route path="/movie/:id" element={<Movie />}/>
+                <Route path={`${PATH}/`} element={<Home />}/>
+                <Route path={`${PATH}/movie/:id`} element={<Movie />}/>
             </Routes>
         </>
     )
