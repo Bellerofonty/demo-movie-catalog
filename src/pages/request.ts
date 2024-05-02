@@ -1,7 +1,7 @@
-import {IMovieData} from "../../models";
+import {IMovieData} from "../models";
 import axios from "axios";
-import {FIELDS, MOVIE_URL, RANDOM_MOVIE_URL, RETRY_COUNT} from "./const";
-import * as token from '../../APIToken.json'
+import {FIELDS, MOVIE_URL, RANDOM_MOVIE_URL, RETRY_COUNT} from "./movie/const";
+import * as token from '../APIToken.json'
 
 const {APIToken} = token
 

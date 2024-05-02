@@ -4,7 +4,7 @@ import {MovieCard} from "../../components/MovieCard";
 import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
 import {Loader} from "../../components/Loader";
-import {getMovieData, MovieId} from "./request";
+import {getMovieData, MovieId} from "../request";
 
 const {docs} = moviesData
 
