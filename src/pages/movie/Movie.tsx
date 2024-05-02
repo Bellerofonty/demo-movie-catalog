@@ -63,6 +63,10 @@ export const Movie = () => {
     }, [])
 
     const updateRandomMovie = useCallback(() => {
+        dispatch({
+            type: 'reset'
+        })
+
         getMovieData({id: 'random'})
             .then((data) => {
                 dispatch({
