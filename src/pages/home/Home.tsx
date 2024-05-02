@@ -1,18 +1,68 @@
 import {MoviesList} from "../../components/MoviesList";
-import React from "react";
+import React, {useCallback, useEffect, useReducer} from "react";
 import * as moviesData from "../../moviesData.json"
 import {getMoviesList} from "../request";
+import {IMovieData} from "../../models";
+import {Loader} from "../../components/Loader";
 
 const {docs} = moviesData
 
-async function get() {
-    const moviesList = await getMoviesList(5).then(data => data)
-    console.log('list', moviesList)
+type MoviesListState = {
+    state: 'loading',
+} | {
+    state: 'ready',
+    moviesList: IMovieData[]
 }
-console.log(get())
+
+type MoviesListAction = {
+    type: 'setReady',
+    payload: IMovieData[]
+} | {
+    type: 'reset'
+}
+
+const moviesListReducer = (state: MoviesListState, action: MoviesListAction): MoviesListState => {
+    switch (action.type) {
+        case 'setReady':
+            return {state: 'ready', moviesList: action.payload}
+        case 'reset':
+            return {state: 'loading'}
+    }
+}
 
 export const Home = () => {
+    const [movieListState, dispatch] = useReducer(moviesListReducer, {state: 'loading'})
+
+    useEffect(() => {
+        getMoviesList(5)
+            .then((data) => {
+                dispatch({type: 'setReady', payload: data})
+            })
+            .catch((e) => {
+                console.error(e)
+                dispatch({type: 'setReady', payload: docs})
+            })
+    }, [])
+
+    const updateRandomMovie = useCallback(() => {
+        getMoviesList(5)
+            .then((data) => {
+                dispatch({
+                    type: 'setReady',
+                    payload: data
+                })
+            })
+            .catch((e) => {
+                console.error(e)
+                dispatch({type: 'setReady', payload: docs})
+            })
+    }, [])
+
+    if (movieListState.state === 'loading') {
+        return <Loader/>
+    }
+
     return (
-        <MoviesList movieDataList={docs}/>
+        <MoviesList movieDataList={movieListState.moviesList} />
     )
 }

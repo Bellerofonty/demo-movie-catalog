@@ -23,7 +23,7 @@ interface Options {
     method: 'GET'
     params: {
         page: '1',
-        limit: '1',
+        limit?: number,
         selectFields: typeof FIELDS,
         notNullFields: typeof FIELDS,
         type: 'movie',
@@ -37,7 +37,6 @@ const commonOptions: Partial<Options> = {
     method: 'GET',
     params: {
         page: '1',
-        limit: '1',
         selectFields: FIELDS,
         notNullFields: FIELDS,
         type: 'movie',
@@ -48,6 +47,10 @@ const commonOptions: Partial<Options> = {
 const getRandomMovie = (): Promise<IMovieData> => {
     const options = {
         ...commonOptions,
+        params: {
+            ...commonOptions.params,
+            limit: 1
+        },
         url: RANDOM_MOVIE_URL
     }
     return axios.request(options)
@@ -64,7 +67,8 @@ const getMovieDataById = (id: number): Promise<IMovieData> => {
         ...commonOptions,
         params: {
             ...commonOptions.params,
-            id
+            id,
+            limit: 1
         },
         url: MOVIE_URL
     }
@@ -91,4 +95,23 @@ export const getMovieData = ({id}: IGetMovieDataParams): Promise<IMovieData> => 
             })
     }
     return request()
+}
+
+export const getMoviesList = (count: number): Promise<IMovieData[]> => {
+    const options = {
+        ...commonOptions,
+        params: {
+            ...commonOptions.params,
+            count
+        },
+        url: MOVIE_URL
+    }
+    return axios.request(options)
+        .then(({data}: {data: IResponseData}) => {
+            if (!data || !data.docs) {
+                throw new Error('No data')
+            }
+
+            return data.docs
+        })
 }
