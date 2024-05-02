@@ -28,10 +28,6 @@ const similarMoviesReducer = (state: MoviesListState, action: MoviesListAction):
     }
 }
 
-const Home = () => {
-
-}
-
 export const SimilarMovies = ({genres}: {genres: string}) => {
     const [similarMoviesState, dispatch] = useReducer(similarMoviesReducer, {state: 'loading'})
     const navigate = useNavigate()
@@ -64,8 +60,6 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
     if (similarMoviesState.state === 'loading') {
         return <Loader/>
     }
-
-    console.log('similar', similarMoviesState.moviesList)
 
     if (!similarMoviesState.moviesList.length) {
         return (
