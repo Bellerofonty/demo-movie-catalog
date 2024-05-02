@@ -74,9 +74,11 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
     }
 
     return (
-        <div className="similar-movies">
-            {similarMoviesState.moviesList.map((movie) => {
-                return (
+        <>
+            <h2 className="caption-secondary">Похожие фильмы</h2>
+            <div className="similar-movies">
+                {similarMoviesState.moviesList.map((movie) => {
+                    return (
                         <div className="similar-movies-item" key={movie.id}>
                             <img
                                 src={movie.poster.previewUrl}
@@ -88,8 +90,9 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
                             />
                             <p>{movie.name}</p>
                         </div>
-                )
-            })}
-        </div>
+                    )
+                })}
+            </div>
+        </>
     )
 }

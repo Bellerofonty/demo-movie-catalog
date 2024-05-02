@@ -183,15 +183,19 @@ header div:hover {
 
 /* SIMILAR */
 
+.caption-secondary {
+    font-weight: 400;
+    margin-left: 0.5rem;
+}
+
 .similar-movies {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .similar-movies-item {
     margin: 0;
-    /*height: 20rem;*/
 }
 
 .similar-movies-item img {
