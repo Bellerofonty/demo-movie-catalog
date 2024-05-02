@@ -37,7 +37,7 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getMoviesList(5)
+        getMoviesList({limit: 5, genres})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
             })
@@ -48,7 +48,7 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
     }, [])
 
     const updateRandomMovie = useCallback(() => {
-        getMoviesList(5)
+        getMoviesList({limit: 5, genres})
             .then((data) => {
                 dispatch({
                     type: 'setReady',

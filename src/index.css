@@ -200,6 +200,13 @@ header div:hover {
     cursor: pointer;
 }
 
+.similar-movies-item p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 8rem;
+}
+
 /* OTHER */
 
 .loader {

@@ -34,7 +34,7 @@ export const Home = () => {
     const [movieListState, dispatch] = useReducer(moviesListReducer, {state: 'loading'})
 
     useEffect(() => {
-        getMoviesList(24)
+        getMoviesList({limit: 24})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
             })
@@ -45,7 +45,7 @@ export const Home = () => {
     }, [])
 
     const updateRandomMovie = useCallback(() => {
-        getMoviesList(24)
+        getMoviesList({limit: 24})
             .then((data) => {
                 dispatch({
                     type: 'setReady',
