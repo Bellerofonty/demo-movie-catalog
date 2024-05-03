@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useReducer} from "react";
+import React, {useEffect, useReducer} from "react";
 import {getMoviesList} from "../pages/request";
 import {IMovieData} from "../models";
 import {Loader} from "./Loader";
@@ -36,20 +36,6 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
         getMoviesList({limit: 5, genres})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
-            })
-            .catch((e) => {
-                console.error(e)
-                dispatch({type: 'setReady', payload: []})
-            })
-    }, [])
-
-    const updateRandomMovie = useCallback(() => {
-        getMoviesList({limit: 5, genres})
-            .then((data) => {
-                dispatch({
-                    type: 'setReady',
-                    payload: data
-                })
             })
             .catch((e) => {
                 console.error(e)
