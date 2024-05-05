@@ -4,6 +4,7 @@ import {IMovieData} from "../models";
 import {Loader} from "./Loader";
 import {PATH} from "../App";
 import {useNavigate} from "react-router-dom";
+import posterPlaceholder from '../img/poster-placeholder.jpg'
 
 type MoviesListState = {
     state: 'loading',
@@ -61,7 +62,7 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
                     return (
                         <div className="similar-movies-item" key={movie.id}>
                             <img
-                                src={movie.poster.previewUrl}
+                                src={movie.poster?.previewUrl || posterPlaceholder}
                                 alt="poster"
                                 onClick={() => {
                                     navigate(`${PATH}/movie/${movie.id}`);

@@ -34,7 +34,7 @@ export function MovieCard({movieData, nextRandomMovie}: IMovieCardProps) {
                         }
                     </p>
                 </div>
-                <img src={movieData.poster.previewUrl || posterPlaceholder} alt="poster" className="poster"/>
+                <img src={movieData.poster?.previewUrl || posterPlaceholder} alt="poster" className="poster"/>
             </div>
             {nextRandomMovie && (<button type="button" className="next-random-movie" onClick={nextRandomMovie}>
                 Новый случайный фильм
