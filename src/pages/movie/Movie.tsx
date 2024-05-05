@@ -62,7 +62,7 @@ export const Movie = () => {
             })
     }, [])
 
-    const updateRandomMovie = useCallback(() => {
+    const updateRandomMovie = () => {
         dispatch({
             type: 'reset'
         })
@@ -78,7 +78,7 @@ export const Movie = () => {
                 console.error(e)
                 dispatch({type: 'setReady', payload: docs[0]})
             })
-    }, [])
+    }
 
 
     if (movieState.state === 'loading') {
