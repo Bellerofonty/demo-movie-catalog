@@ -22,7 +22,7 @@ export function MoviesListItem({movieData}: IMoviesListItemProps) {
             />
             <div className="movie-list-info">
                 <span className="movie-list-rating">
-                    {movieData.rating.kp.toString().substring(0,3)}
+                    {movieData.rating.imdb.toString().substring(0,3)}
                 </span>
                 <div className="movie-list-desc">
                     <p>{movieData.name}</p>
