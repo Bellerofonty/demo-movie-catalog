@@ -66,7 +66,6 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
                                 alt="poster"
                                 onClick={() => {
                                     navigate(`${PATH}/movie/${movie.id}`);
-                                    window.location.reload()
                                 }}
                             />
                             <p>{movie.name}</p>

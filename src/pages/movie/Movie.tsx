@@ -52,6 +52,10 @@ export const Movie = () => {
     const id = parseIdFromParams(params)
 
     useEffect(() => {
+        dispatch({
+            type: 'reset'
+        })
+
         getMovieData({id})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
@@ -60,7 +64,7 @@ export const Movie = () => {
                 console.error(e)
                 dispatch({type: 'setReady', payload: docs[0]})
             })
-    }, [])
+    }, [id])
 
     const updateRandomMovie = () => {
         dispatch({
