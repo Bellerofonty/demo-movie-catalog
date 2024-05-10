@@ -114,10 +114,8 @@ export const getMoviesList = ({limit, genres, excludeId}: {
         url: MOVIE_URL
     }
 
-    console.log(excludeId)
     if (excludeId) {
         options.params.id = `!${excludeId}`
-        console.log('id added')
     }
 
     return axios.request(options)
