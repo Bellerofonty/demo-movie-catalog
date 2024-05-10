@@ -52,26 +52,15 @@ export const Movie = () => {
     const id = parseIdFromParams(params)
 
     useEffect(() => {
+        updateMovie(id)
+    }, [id])
+
+    const updateMovie = (id: number | 'random') => {
         dispatch({
             type: 'reset'
         })
 
         getMovieData({id})
-            .then((data) => {
-                dispatch({type: 'setReady', payload: data})
-            })
-            .catch((e) => {
-                console.error(e)
-                dispatch({type: 'setReady', payload: docs[0]})
-            })
-    }, [id])
-
-    const updateRandomMovie = () => {
-        dispatch({
-            type: 'reset'
-        })
-
-        getMovieData({id: 'random'})
             .then((data) => {
                 dispatch({
                     type: 'setReady',
@@ -98,7 +87,7 @@ export const Movie = () => {
     return (
         <>
             <MovieCard movieData={movieState.movieData}
-                       nextRandomMovie={id === "random" ? updateRandomMovie : undefined}/>
+                       nextRandomMovie={id === "random" ? () => updateMovie('random') : undefined}/>
             <SimilarMovies genres={genres}/>
         </>
     )
