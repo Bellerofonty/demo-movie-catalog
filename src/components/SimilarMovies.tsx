@@ -29,12 +29,12 @@ const similarMoviesReducer = (state: MoviesListState, action: MoviesListAction):
     }
 }
 
-export const SimilarMovies = ({genres}: {genres: string}) => {
+export const SimilarMovies = ({genres, id}: {genres: string, id: number}) => {
     const [similarMoviesState, dispatch] = useReducer(similarMoviesReducer, {state: 'loading'})
     const navigate = useNavigate()
 
     useEffect(() => {
-        getMoviesList({limit: 5, genres})
+        getMoviesList({limit: 5, genres, excludeId: id})
             .then((data) => {
                 dispatch({type: 'setReady', payload: data})
             })

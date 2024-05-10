@@ -87,8 +87,8 @@ export const Movie = () => {
     return (
         <>
             <MovieCard movieData={movieState.movieData}
-                       nextRandomMovie={id === "random" ? () => updateMovie('random') : undefined}/>
-            <SimilarMovies genres={genres}/>
+                       nextRandomMovie={id === "random" ? () => updateMovie('random') : undefined} />
+            <SimilarMovies genres={genres} id={movieState.movieData.id} />
         </>
     )
 }

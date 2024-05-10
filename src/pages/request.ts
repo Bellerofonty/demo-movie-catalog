@@ -27,7 +27,7 @@ interface Options {
         selectFields: typeof FIELDS,
         notNullFields: typeof FIELDS,
         type: 'movie',
-        id?: 'random'
+        id?: string
     },
     headers: {accept: 'application/json', 'X-API-KEY': string},
     url: typeof RANDOM_MOVIE_URL | typeof MOVIE_URL;
@@ -97,7 +97,11 @@ export const getMovieData = ({id}: IGetMovieDataParams): Promise<IMovieData> => 
     return request()
 }
 
-export const getMoviesList = ({limit, genres}: {limit: number, genres?: string}): Promise<IMovieData[]> => {
+export const getMoviesList = ({limit, genres, excludeId}: {
+    limit: number,
+    genres?: string,
+    excludeId?: number
+}): Promise<IMovieData[]> => {
     const options = {
         ...commonOptions,
         params: {
@@ -109,6 +113,13 @@ export const getMoviesList = ({limit, genres}: {limit: number, genres?: string})
         },
         url: MOVIE_URL
     }
+
+    console.log(excludeId)
+    if (excludeId) {
+        options.params.id = `!${excludeId}`
+        console.log('id added')
+    }
+
     return axios.request(options)
         .then(({data}: {data: IResponseData}) => {
             if (!data || !data.docs) {
