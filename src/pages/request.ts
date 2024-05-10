@@ -103,7 +103,9 @@ export const getMoviesList = ({limit, genres}: {limit: number, genres?: string})
         params: {
             ...commonOptions.params,
             limit,
-            "genres.name": genres
+            "genres.name": genres,
+            'rating.kp': '1-10',
+            'rating.imdb': '1-10'
         },
         url: MOVIE_URL
     }
