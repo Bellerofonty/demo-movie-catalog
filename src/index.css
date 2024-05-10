@@ -145,6 +145,10 @@ header div:hover {
     margin-right: 0.5rem;
 }
 
+.movie-list-poster-container {
+    height: 18rem;
+}
+
 .movie-list-poster {
     width: 12rem;
     margin: 0.5rem 0 0 0;

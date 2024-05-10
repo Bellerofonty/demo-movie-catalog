@@ -14,12 +14,14 @@ export function MoviesListItem({movieData}: IMoviesListItemProps) {
 
     return (
         <div className="movie-list-item">
-            <img
-                src={movieData.poster?.previewUrl || posterPlaceholder}
-                className="movie-list-poster"
-                alt="poster"
-                onClick={() => {navigate(`${PATH}/movie/${movieData.id}`)}}
-            />
+            <div className="movie-list-poster-container">
+                <img
+                    src={movieData.poster?.previewUrl || posterPlaceholder}
+                    className="movie-list-poster"
+                    alt="poster"
+                    onClick={() => {navigate(`${PATH}/movie/${movieData.id}`)}}
+                />
+            </div>
             <div className="movie-list-info">
                 <span className="movie-list-rating">
                     {movieData.rating.imdb.toString().substring(0,3)}
