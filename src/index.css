@@ -198,6 +198,10 @@ header div:hover {
     margin: 0;
 }
 
+.similar-movies-item .poster-container {
+    height: 13.5rem;
+}
+
 .similar-movies-item img {
     width: 9rem;
     height: auto;

@@ -61,13 +61,15 @@ export const SimilarMovies = ({genres}: {genres: string}) => {
                 {similarMoviesState.moviesList.map((movie) => {
                     return (
                         <div className="similar-movies-item" key={movie.id}>
-                            <img
-                                src={movie.poster?.previewUrl || posterPlaceholder}
-                                alt="poster"
-                                onClick={() => {
-                                    navigate(`${PATH}/movie/${movie.id}`);
-                                }}
-                            />
+                            <div className="poster-container">
+                                <img
+                                    src={movie.poster?.previewUrl || posterPlaceholder}
+                                    alt="poster"
+                                    onClick={() => {
+                                        navigate(`${PATH}/movie/${movie.id}`);
+                                    }}
+                                />
+                            </div>
                             <p>{movie.name}</p>
                         </div>
                     )
