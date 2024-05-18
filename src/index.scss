@@ -1,3 +1,5 @@
+@import "normalize.css";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -39,7 +41,7 @@ header {
   .caption {
     background: brown;
     margin: 0;
-    padding-left: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
     font-weight: lighter;
   }
 
@@ -89,7 +91,7 @@ header {
   }
 
   .next-random-movie {
-    width: 12rem;
+    width: 14rem;
     background: black;
     color: lightgray;
     border: none;
@@ -98,6 +100,7 @@ header {
     margin: 0.5rem auto 0 auto;
     display: block;
     cursor: pointer;
+    font-size: 1rem;
   }
 
   .next-random-movie:hover {
@@ -158,7 +161,7 @@ header {
       .info {
         display: flex;
         flex-direction: row;
-        margin: 0 0.5rem;
+        margin: 0.5rem;
 
         div {
           margin-left: 0.5rem;
