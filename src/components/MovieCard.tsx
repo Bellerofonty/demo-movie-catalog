@@ -10,14 +10,14 @@ interface IMovieCardProps {
 export function MovieCard({movieData, nextRandomMovie}: IMovieCardProps) {
     return (
         <div className="card">
-            <h1 className="card-caption">Кино справочник</h1>
+            <h1 className="caption">Кино справочник</h1>
             <h2 className="name">
                 <span className="rating">
                     {movieData.rating.imdb ? movieData.rating.imdb.toString().substring(0, 3) : 'N/A'}
                 </span>
                 {movieData.name || (movieData.names && movieData.names[0].name)}
             </h2>
-            <div className="movie-card-content">
+            <div className="content">
                 <div className="description">
                     <p>{movieData.description}</p>
                     <p className="extra-info">

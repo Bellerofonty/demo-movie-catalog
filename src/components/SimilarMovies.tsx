@@ -60,7 +60,7 @@ export const SimilarMovies = ({genres, id}: {genres: string, id: number}) => {
             <div className="similar-movies">
                 {similarMoviesState.moviesList.map((movie) => {
                     return (
-                        <div className="similar-movies-item" key={movie.id}>
+                        <div className="movie" key={movie.id}>
                             <div className="poster-container">
                                 <img
                                     src={movie.poster?.previewUrl || posterPlaceholder}

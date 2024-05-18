@@ -13,20 +13,20 @@ export function MoviesListItem({movieData}: IMoviesListItemProps) {
     const navigate = useNavigate()
 
     return (
-        <div className="movie-list-item">
-            <div className="movie-list-poster-container">
+        <div className="movie">
+            <div className="poster-container">
                 <img
                     src={movieData.poster?.previewUrl || posterPlaceholder}
-                    className="movie-list-poster"
+                    className="poster"
                     alt="poster"
                     onClick={() => {navigate(`${PATH}/movie/${movieData.id}`)}}
                 />
             </div>
-            <div className="movie-list-info">
-                <span className="movie-list-rating">
+            <div className="info">
+                <span className="rating">
                     {movieData.rating.imdb.toString().substring(0,3)}
                 </span>
-                <div className="movie-list-desc">
+                <div className="desc">
                     <p>{movieData.name}</p>
                     <p>{movieData.year}</p>
                 </div>
