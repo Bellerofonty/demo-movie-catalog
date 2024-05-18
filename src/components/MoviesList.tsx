@@ -25,7 +25,7 @@ export function MoviesList({movieDataList}: IMovieListProps) {
 
     return (
         <div className="list">
-            <h1 className="card-caption">Кино справочник</h1>
+            <h1 className="caption">Кино справочник</h1>
             <h2 className="name">Лучшие фильмы</h2>
             <nav className="pagination">
                 {

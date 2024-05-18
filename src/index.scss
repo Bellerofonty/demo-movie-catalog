@@ -35,9 +35,7 @@ header {
   }
 }
 
-/* MOVIE CARD */
-
-.card {
+@mixin headers {
   .caption {
     background: brown;
     margin: 0;
@@ -50,6 +48,12 @@ header {
     margin: 1rem 0.5rem;
     font-weight: 400;
   }
+}
+
+/* MOVIE CARD */
+
+.card {
+  @include headers;
 
   .rating {
     margin-right: 2rem;
@@ -104,83 +108,87 @@ header {
 
 /* MOVIES LIST */
 
-.pagination {
-  display: flex;
-  flex-direction: row;
-  padding-left: 0.5rem;
+.list {
+  @include headers;
 
-  button {
-    background: black;
-    color: lightgray;
-    border: none;
-    float: left;
-    padding: 0.5rem 1rem;
-    border-radius: 0.2rem;
-  }
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0.5rem;
 
-  button:hover:not(.active) {
-    background-color: #b1b1b1;
-    cursor: pointer;
-  }
-
-  .active {
-    background: lightgray;
-    color: black;
-  }
-}
-
-.movies-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 0 0 0 0.5rem;
-
-  .movie {
-    width: 12rem;
-
-    .poster-container {
-      height: 18rem;
-
-      .poster {
-        width: 12rem;
-        margin: 0.5rem 0 0 0;
-        cursor: pointer;
-      }
+    button {
+      background: black;
+      color: lightgray;
+      border: none;
+      float: left;
+      padding: 0.5rem 1rem;
+      border-radius: 0.2rem;
     }
 
-    .info {
-      display: flex;
-      flex-direction: row;
-      margin: 0 0.5rem;
+    button:hover:not(.active) {
+      background-color: #b1b1b1;
+      cursor: pointer;
+    }
 
-      div {
-        margin-left: 0.5rem;
+    .active {
+      background: lightgray;
+      color: black;
+    }
+  }
+
+  .movies-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 0 0 0.5rem;
+
+    .movie {
+      width: 12rem;
+
+      .poster-container {
+        height: 18rem;
+
+        .poster {
+          width: 12rem;
+          margin: 0.5rem 0 0 0;
+          cursor: pointer;
+        }
       }
 
-      p {
-        margin: 0.5rem 0 0;
-      }
+      .info {
+        display: flex;
+        flex-direction: row;
+        margin: 0 0.5rem;
 
-      .rating {
-        font-size: 3rem;
-      }
-
-      .desc {
-        margin-top: 0.3rem;
+        div {
+          margin-left: 0.5rem;
+        }
 
         p {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          max-width: 7rem;
-          font-size: 0.8rem;
+          margin: 0.5rem 0 0;
+        }
+
+        .rating {
+          font-size: 3rem;
+        }
+
+        .desc {
+          margin-top: 0.3rem;
+
+          p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 7rem;
+            font-size: 0.8rem;
+          }
         }
       }
     }
-  }
 
-  .movie:not(:last-child) {
-    margin-right: 0.5rem;
+    .movie:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   }
 }
 
