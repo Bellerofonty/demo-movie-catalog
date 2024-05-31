@@ -56,6 +56,7 @@ header {
 
 .card {
   @include headers;
+  padding-bottom: 1px;
 
   .rating {
     margin-right: 2rem;
@@ -236,3 +237,48 @@ header {
   margin: 12.5rem auto 0 auto;
   padding-bottom: 12.5rem;
 }
+
+/* SKELETON-CARD */
+
+.skeleton-card {
+  @mixin skeleton-commons {
+    background: lightgray;
+    border-radius: 0.4rem;
+  }
+
+  .name {
+    @include skeleton-commons;
+    height: 3rem;
+    width: 36rem;
+  }
+
+  .desc {
+    width: 36rem;
+    margin: 0 0 3rem 0;
+
+    .line {
+      @include skeleton-commons;
+      height: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .info {
+    @include skeleton-commons;
+    width: 12rem;
+    height: 1rem;
+    margin: 1rem 0;
+  }
+
+  .poster {
+    @include skeleton-commons;
+    width: 12rem;
+    height: 18rem;
+    margin: 0.5rem;
+  }
+}
+
+
+
+
+
