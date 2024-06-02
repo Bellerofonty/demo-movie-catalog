@@ -27,8 +27,8 @@ export function MoviesListItem({movieData}: IMoviesListItemProps) {
                     {movieData.rating.imdb.toString().substring(0,3)}
                 </span>
                 <div className="desc">
-                    <p>{movieData.name}</p>
-                    <p>{movieData.year}</p>
+                    <p>{movieData.name || 'N/A'}</p>
+                    <p>{movieData.year || 'N/A'}</p>
                 </div>
             </div>
         </div>
