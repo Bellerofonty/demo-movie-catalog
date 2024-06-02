@@ -247,13 +247,13 @@ header {
 
 .skeleton-card {
   @mixin skeleton-commons {
-    background: lightgray;
+    background: rgba(211, 211, 211, 0.48);
     border-radius: 0.4rem;
   }
 
   .name {
     @include skeleton-commons;
-    height: 3rem;
+    height: 3.45rem;
     width: 36rem;
   }
 
