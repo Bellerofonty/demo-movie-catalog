@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/test-assignment-react-developer-rustore/static/css/main.b343b572.css",
-    "main.js": "/test-assignment-react-developer-rustore/static/js/main.8f184e83.js",
+    "main.css": "/test-assignment-react-developer-rustore/static/css/main.22f18b2f.css",
+    "main.js": "/test-assignment-react-developer-rustore/static/js/main.98a33b37.js",
     "static/js/453.9e5f82cd.chunk.js": "/test-assignment-react-developer-rustore/static/js/453.9e5f82cd.chunk.js",
     "static/media/poster-placeholder.jpg": "/test-assignment-react-developer-rustore/static/media/poster-placeholder.c165bf30e6c54797e383.jpg",
     "index.html": "/test-assignment-react-developer-rustore/index.html",
-    "main.b343b572.css.map": "/test-assignment-react-developer-rustore/static/css/main.b343b572.css.map",
-    "main.8f184e83.js.map": "/test-assignment-react-developer-rustore/static/js/main.8f184e83.js.map",
+    "main.22f18b2f.css.map": "/test-assignment-react-developer-rustore/static/css/main.22f18b2f.css.map",
+    "main.98a33b37.js.map": "/test-assignment-react-developer-rustore/static/js/main.98a33b37.js.map",
     "453.9e5f82cd.chunk.js.map": "/test-assignment-react-developer-rustore/static/js/453.9e5f82cd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b343b572.css",
-    "static/js/main.8f184e83.js"
+    "static/css/main.22f18b2f.css",
+    "static/js/main.98a33b37.js"
   ]
 }
