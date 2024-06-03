@@ -1,7 +1,7 @@
 import React from "react";
 import posterPlaceholder from "../img/poster-placeholder.jpg";
 
-export const CardLoader = () => {
+export const MovieCardLoader = () => {
     return (
         <div className="card">
             <div className="skeleton-card">

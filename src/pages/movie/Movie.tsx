@@ -3,8 +3,7 @@ import * as moviesData from "../../moviesData.json"
 import {MovieCard} from "../../components/MovieCard";
 import {useParams, Params} from "react-router-dom"
 import {IMovieData} from "../../models";
-import {Loader} from "../../components/Loader";
-import {CardLoader} from "../../components/CardLoader";
+import {MovieCardLoader} from "../../components/MovieCardLoader";
 import {getMovieData, MovieId} from "../request";
 import {SimilarMovies} from "../../components/SimilarMovies";
 
@@ -76,7 +75,7 @@ export const Movie = () => {
 
 
     if (movieState.state === 'loading') {
-        return <CardLoader/>
+        return <MovieCardLoader/>
     }
 
     const genres = (movieState.movieData.genres &&
