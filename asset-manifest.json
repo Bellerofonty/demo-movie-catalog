@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/test-assignment-react-developer-rustore/static/css/main.22f18b2f.css",
-    "main.js": "/test-assignment-react-developer-rustore/static/js/main.98a33b37.js",
-    "static/js/453.9e5f82cd.chunk.js": "/test-assignment-react-developer-rustore/static/js/453.9e5f82cd.chunk.js",
-    "static/media/poster-placeholder.jpg": "/test-assignment-react-developer-rustore/static/media/poster-placeholder.c165bf30e6c54797e383.jpg",
-    "index.html": "/test-assignment-react-developer-rustore/index.html",
-    "main.22f18b2f.css.map": "/test-assignment-react-developer-rustore/static/css/main.22f18b2f.css.map",
-    "main.98a33b37.js.map": "/test-assignment-react-developer-rustore/static/js/main.98a33b37.js.map",
-    "453.9e5f82cd.chunk.js.map": "/test-assignment-react-developer-rustore/static/js/453.9e5f82cd.chunk.js.map"
+    "main.css": "/demo-movie-catalog/static/css/main.22f18b2f.css",
+    "main.js": "/demo-movie-catalog/static/js/main.ec9309f6.js",
+    "static/js/453.9e5f82cd.chunk.js": "/demo-movie-catalog/static/js/453.9e5f82cd.chunk.js",
+    "static/media/poster-placeholder.jpg": "/demo-movie-catalog/static/media/poster-placeholder.c165bf30e6c54797e383.jpg",
+    "index.html": "/demo-movie-catalog/index.html",
+    "main.22f18b2f.css.map": "/demo-movie-catalog/static/css/main.22f18b2f.css.map",
+    "main.ec9309f6.js.map": "/demo-movie-catalog/static/js/main.ec9309f6.js.map",
+    "453.9e5f82cd.chunk.js.map": "/demo-movie-catalog/static/js/453.9e5f82cd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22f18b2f.css",
-    "static/js/main.98a33b37.js"
+    "static/js/main.ec9309f6.js"
   ]
 }
