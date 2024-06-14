@@ -9,7 +9,7 @@ import {
 import {Home} from "./pages/home/Home";
 import {Movie} from "./pages/movie/Movie";
 
-const PROD_PATH = "/test-assignment-react-developer-rustore"
+const PROD_PATH = "/demo-movie-catalog"
 const DEV_PATH = ""
 export const PATH = process.env.NODE_ENV === 'production' ? PROD_PATH : DEV_PATH
 
