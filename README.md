@@ -2,7 +2,7 @@
 
 ### GitHub Pages
 
-[https://bellerofonty.github.io/test-assignment-react-developer-rustore/](https://bellerofonty.github.io/test-assignment-react-developer-rustore/)
+[https://bellerofonty.github.io/demo-movie-catalog/](https://bellerofonty.github.io/demo-movie-catalog/)
 
 ### Используется API Кинопоиска
 
